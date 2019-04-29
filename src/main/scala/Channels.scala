@@ -2,6 +2,8 @@ import java.io.RandomAccessFile
 import java.net.InetSocketAddress
 import java.nio.ByteBuffer
 import java.nio.channels.{DatagramChannel, ServerSocketChannel, SocketChannel}
+import java.nio.channels.AsynchronousChannel
+import java.nio.channels.AsynchronousServerSocketChannel
 
 object Channels {
   val EOF = -1

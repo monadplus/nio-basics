@@ -2,18 +2,18 @@ import java.io.RandomAccessFile
 import java.net.InetSocketAddress
 import java.nio.ByteBuffer
 import java.nio.channels.{SelectionKey, Selector, SocketChannel}
+import java.nio.channels.AsynchronousChannelGroup
 
 object SelectorExample {
   // Determine which NIO Channels are ready for data
   def example(): Unit = {
-
+    AsynchronousChannelGroup.withFixedThreadPool()
     val address = "http://httpbin.org"
     val socketChannel = SocketChannel.open()
     socketChannel.configureBlocking(false)
     socketChannel.connect(new InetSocketAddress("google.com", 80))
     while (!socketChannel.finishConnect()) {}
     val selector = Selector.open()
-    socketChannel.configureBlocking(false)
     val key = socketChannel.register(
       selector,
       SelectionKey.OP_CONNECT | SelectionKey.OP_READ | SelectionKey.OP_WRITE)

@@ -60,6 +60,7 @@ object NonBlockingServer {
   //   Check only the channels we need:
   //   1. When a message is written in the Message Writer, register the channel
   //   2. If a meesage writer writes all its messages to a Channel, unregister it from the selector.
+
   // non-blocking server:
   // Three pipelines that must execute regularly:
   //   - The read pipeline which checks for new incoming data from the open connections.

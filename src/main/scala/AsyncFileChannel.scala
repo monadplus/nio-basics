@@ -52,7 +52,10 @@ object AsyncFileChannel {
       }
     )
 
-    // todo: same for writing with cb
+    fileChannel.write(buf, 0, buf, new CompletionHandler[Integer, ByteBuffer] {
+      override def completed(result: Integer, attachment: ByteBuffer): Unit = ???
+      override def failed(exc: Throwable, attachment: ByteBuffer): Unit = ???
+    })
   }
 
   def main(args: Array[String]): Unit = {
